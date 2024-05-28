@@ -1,0 +1,7 @@
+# local supabase config
+/supabase/.temp/
+
+# env-files
+.local
+
+.DS_file

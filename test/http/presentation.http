@@ -1,0 +1,17 @@
+###
+GET {{server_url}}/rest/v1/presentations
+apikey: {{key_authenticated}}
+Authorization: Bearer {{key_authenticated}}
+
+> {%
+client.test('Should not allow anon users to access presentations',
+  function() {
+    client.assert(response.status === '401');
+  });
+%}
+
+###
+POST {{server_url}}/functions/v1/presentation-start
+Authorization: Bearer {{key_authenticated}}
+
+{"presentation": "2"}

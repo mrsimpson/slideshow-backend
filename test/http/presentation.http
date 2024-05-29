@@ -1,17 +1,24 @@
-###
-GET {{server_url}}/rest/v1/presentations
-apikey: {{key_authenticated}}
-Authorization: Bearer {{key_authenticated}}
+### login
+POST {{server_url}}/auth/v1/token?grant_type=password
+apikey: {{key_anon_role}}
+Content-Type: application/json
+
+{ "email": "{{users.presenter.username}}", "password": "{{users.presenter.password}}"}
 
 > {%
-client.test('Should not allow anon users to access presentations',
-  function() {
-    client.assert(response.status === '401');
-  });
+    var access_token = response.body['access_token']
+    client.global.set("access_token", access_token)
 %}
 
-###
-POST {{server_url}}/functions/v1/presentation-start
-Authorization: Bearer {{key_authenticated}}
+### get all presentations
+GET {{server_url}}/rest/v1/presentations
+apikey: {{key_anon_role}}
+Authorization: Bearer {{access_token}}
 
-{"presentation": "2"}
+
+### start a presentation
+POST {{server_url}}/rest/v1/rpc/presentation_start
+apikey: {{key_anon_role}}
+Authorization: Bearer {{access_token}}
+
+{"p_presentation": "1"}

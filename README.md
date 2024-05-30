@@ -20,5 +20,9 @@ Slideshow aims at bridging this gap between presenter and audience.
 
 ## Status
 
-Big WIP
+Big WIP. It's a side project of a father with two children. Expect not much progress.
+
+## How to get involved
+
+Add an issue to get in touch.
 

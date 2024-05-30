@@ -21,4 +21,4 @@ POST {{server_url}}/rest/v1/rpc/presentation_start
 apikey: {{key_anon_role}}
 Authorization: Bearer {{access_token}}
 
-{"p_presentation": "1"}
+{"n_presentation": 1}

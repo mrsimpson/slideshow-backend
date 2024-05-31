@@ -37,7 +37,7 @@ export type Database = {
       presentation_events: {
         Row: {
           created_at: string
-          created_by: string
+          created_by: string | null
           id: number
           presentation: number
           type: Database["public"]["Enums"]["event_type"]
@@ -45,7 +45,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
-          created_by?: string
+          created_by?: string | null
           id?: number
           presentation: number
           type: Database["public"]["Enums"]["event_type"]
@@ -53,7 +53,7 @@ export type Database = {
         }
         Update: {
           created_at?: string
-          created_by?: string
+          created_by?: string | null
           id?: number
           presentation?: number
           type?: Database["public"]["Enums"]["event_type"]
@@ -69,13 +69,6 @@ export type Database = {
           },
           {
             foreignKeyName: "presentation_events_presentation_fkey"
-            columns: ["presentation"]
-            isOneToOne: false
-            referencedRelation: "presentations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "presentation_events_presentation_fkey1"
             columns: ["presentation"]
             isOneToOne: false
             referencedRelation: "presentations"
@@ -112,12 +105,52 @@ export type Database = {
           },
         ]
       }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+          username: string | null
+          website: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+          username?: string | null
+          website?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      presentation_start: {
+        Args: {
+          n_presentation: number
+        }
+        Returns: Database["public"]["CompositeTypes"]["generic_acknowledgement_type"]
+      }
     }
     Enums: {
       event_type:
@@ -128,7 +161,11 @@ export type Database = {
         | "slide_change"
     }
     CompositeTypes: {
-      [_ in never]: never
+      generic_acknowledgement_type: {
+        entity: string | null
+        id: number | null
+        acknowledged_at: string | null
+      }
     }
   }
   storage: {
@@ -519,4 +556,3 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
     : never
-

@@ -13,7 +13,7 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Supabase cloud" uuid="d83d90bb-d749-4332-b90d-71839e9ca79b">
+    <data-source source="LOCAL" name="Supabase cloud" read-only="true" uuid="d83d90bb-d749-4332-b90d-71839e9ca79b">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <remarks>production environment</remarks>

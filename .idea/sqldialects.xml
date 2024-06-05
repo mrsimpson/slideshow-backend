@@ -2,6 +2,8 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/functions/presentation_start.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/tables/presentation_events.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/tables/profiles.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/types/generic_acknowledgement_type.sql" dialect="PostgreSQL" />
   </component>
 </project>

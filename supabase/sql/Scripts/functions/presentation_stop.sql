@@ -1,6 +1,6 @@
 -- DROP FUNCTION public.presentation_start(int8);
 
-CREATE OR REPLACE FUNCTION public.presentation_start(
+CREATE OR REPLACE FUNCTION public.presentation_stop(
     n_presentation int8
 )
     RETURNS generic_acknowledgement_type
@@ -55,7 +55,7 @@ BEGIN
 
     -- Insert the event and return the inserted row
     INSERT INTO presentation_events (presentation, type)
-    VALUES (n_presentation, 'presentation_start')
+    VALUES (n_presentation, 'presentation_stop')
     RETURNING 'presentation_events', id, created_at
         INTO v_acknowledgement;
 

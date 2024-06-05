@@ -15,10 +15,16 @@ GET {{server_url}}/rest/v1/presentations
 apikey: {{key_anon_role}}
 Authorization: Bearer {{access_token}}
 
+### create a new presentation
+POST {{server_url}}/rest/v1/presentations
+apikey: {{key_anon_role}}
+Authorization: Bearer {{access_token}}
+
+{"title": "a second one"}
 
 ### start a presentation
 POST {{server_url}}/rest/v1/rpc/presentation_start
 apikey: {{key_anon_role}}
 Authorization: Bearer {{access_token}}
 
-{"n_presentation": 1}
+{"n_presentation": 3}

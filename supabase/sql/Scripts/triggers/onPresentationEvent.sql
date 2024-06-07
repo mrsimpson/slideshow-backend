@@ -11,6 +11,7 @@ begin
     case new.type
         when 'presentation_start' then target_state = 'started';
         when 'presentation_stop' then target_state = 'stopped';
+        else return new;
         end case;
     if target_state is not null then
         update postgres.public.presentations set lc_status = target_state where id = new.presentation;

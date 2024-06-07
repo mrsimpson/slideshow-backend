@@ -38,6 +38,7 @@ export type Database = {
         Row: {
           created_at: string
           created_by: string | null
+          created_by_alias: string | null
           id: number
           presentation: number
           type: Database["public"]["Enums"]["event_type"]
@@ -46,6 +47,7 @@ export type Database = {
         Insert: {
           created_at?: string
           created_by?: string | null
+          created_by_alias?: string | null
           id?: number
           presentation: number
           type: Database["public"]["Enums"]["event_type"]
@@ -54,6 +56,7 @@ export type Database = {
         Update: {
           created_at?: string
           created_by?: string | null
+          created_by_alias?: string | null
           id?: number
           presentation?: number
           type?: Database["public"]["Enums"]["event_type"]
@@ -81,6 +84,7 @@ export type Database = {
           created_at: string
           description: string | null
           id: number
+          join_code: string | null
           lc_status: Database["public"]["Enums"]["presentation_lifecycle_status"]
           presenter: string
           title: string | null
@@ -89,6 +93,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           id?: number
+          join_code?: string | null
           lc_status?: Database["public"]["Enums"]["presentation_lifecycle_status"]
           presenter?: string
           title?: string | null
@@ -97,6 +102,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           id?: number
+          join_code?: string | null
           lc_status?: Database["public"]["Enums"]["presentation_lifecycle_status"]
           presenter?: string
           title?: string | null
@@ -151,6 +157,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      generate_uid: {
+        Args: {
+          size: number
+        }
+        Returns: string
+      }
       presentation_start: {
         Args: {
           n_presentation: number
@@ -163,14 +175,23 @@ export type Database = {
         }
         Returns: Database["public"]["CompositeTypes"]["generic_acknowledgement_type"]
       }
+      send_reaction: {
+        Args: {
+          n_presentation: number
+          t_emoji: string
+          t_user_alias: string
+        }
+        Returns: Database["public"]["CompositeTypes"]["generic_acknowledgement_type"]
+      }
     }
     Enums: {
       event_type:
         | "presentation_start"
-        | "presentation_terminate"
+        | "presentation_stop"
         | "reaction"
         | "comment"
         | "slide_change"
+        | "user_joined"
       presentation_lifecycle_status:
         | "prepared"
         | "started"

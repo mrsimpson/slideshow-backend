@@ -1,0 +1,19 @@
+### login
+POST {{server_url}}/auth/v1/token?grant_type=password
+apikey: {{key_anon_role}}
+Content-Type: application/json
+
+{ "email": "{{users.audience1.username}}", "password": "{{users.audience1.password}}"}
+
+> {%
+    var access_token = response.body['access_token']
+    client.global.set("access_token", access_token)
+%}
+
+### send a reaction
+POST {{server_url}}/rest/v1/rpc/send_reaction
+apikey: {{key_anon_role}}
+Authorization: Bearer {{key_anon_role}}
+Prefer: return=headers-only
+
+{"n_presentation": 9, "t_emoji": "thumbs_up", "t_user_alias": "Hein Blöd"}

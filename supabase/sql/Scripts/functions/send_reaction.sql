@@ -11,7 +11,6 @@ AS
 $$
 DECLARE
     v_acknowledgement generic_acknowledgement_type;
-    v_presentation    presentations;
 BEGIN
     -- Insert the event and return the inserted row
     INSERT INTO presentation_events (presentation, type, value, created_by, created_by_alias)

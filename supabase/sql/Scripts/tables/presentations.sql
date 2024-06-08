@@ -41,14 +41,14 @@ create policy "Enable all access for presenter" on public.presentations
     for all
     using ((SELECT auth.uid() AS uid) = presenter);
 
-create policy "allow all users to read presentations" on public.presentations
-    as permissive
-    for select
-    using (true);
+-- the following policy would create an infinite recursion when reading presentations
+-- create policy "allow joined users to read presentations" on public.presentations
+--     as permissive
+--     for select
+--     using ((SELECT id) in (SELECT presentation from presentation_events where created_by = auth.uid() and type = 'user_joined'));
 
 grant delete, insert, references, select, trigger, truncate, update on public.presentations to anon;
 
 grant delete, insert, references, select, trigger, truncate, update on public.presentations to authenticated;
 
 grant delete, insert, references, select, trigger, truncate, update on public.presentations to service_role;
-

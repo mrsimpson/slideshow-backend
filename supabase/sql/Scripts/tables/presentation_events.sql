@@ -56,10 +56,11 @@ create policy "Presenter can see all events for own presentation" on public.pres
                                           FROM presentations
                                           WHERE (presentations.id = presentation_events.presentation)));
 
-create policy "Allow insert for indentifyable" on public.presentation_events
+create policy "Allow insert for authenticated" on public.presentation_events
     as permissive
     for insert
-    with check ((created_by IS NOT NULL) OR (created_by_alias IS NOT NULL));
+    to authenticated
+    with check (true);
 
 grant delete, insert, references, select, trigger, truncate, update on public.presentation_events to anon;
 

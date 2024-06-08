@@ -163,6 +163,19 @@ export type Database = {
         }
         Returns: string
       }
+      join_presentation: {
+        Args: {
+          t_join_code: string
+          t_user_alias: string
+        }
+        Returns: Database["public"]["CompositeTypes"]["generic_acknowledgement_type"]
+      }
+      presentation_peek: {
+        Args: {
+          t_join_code: string
+        }
+        Returns: Database["public"]["CompositeTypes"]["presentation_peek_type"]
+      }
       presentation_start: {
         Args: {
           n_presentation: number
@@ -203,6 +216,16 @@ export type Database = {
         entity: string | null
         id: number | null
         acknowledged_at: string | null
+      }
+      presentation_peek_type: {
+        id: number | null
+        title: string | null
+        description: string | null
+        lc_status:
+          | Database["public"]["Enums"]["presentation_lifecycle_status"]
+          | null
+        presenter_username: string | null
+        presenter_fullname: string | null
       }
     }
   }

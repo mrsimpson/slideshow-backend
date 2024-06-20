@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/functions/generate_uid.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/functions/join_presentation.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/functions/presentation_peek.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/functions/presentation_start.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/functions/presentation_stop.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/functions/send_reaction.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/tables/presentation_events.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/tables/presentations.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/tables/profiles.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/triggers/joinCode.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/triggers/onPresentationEvent.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/supabase/sql/Scripts/types/generic_acknowledgement_type.sql" dialect="PostgreSQL" />
   </component>
 </project>

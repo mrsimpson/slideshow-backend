@@ -12,7 +12,8 @@ create table if not exists public.presentation_events
             on update cascade,
     type                 event_type                             not null,
     created_by_alias     text,
-    created_by_anon_uuid uuid
+    created_by_anon_uuid uuid,
+    is_public            bool                                   default false not null
 );
 
 alter table public.presentation_events

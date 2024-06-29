@@ -54,8 +54,8 @@ BEGIN
     END IF;
 
     -- Insert the event and return the inserted row
-    INSERT INTO presentation_events (presentation, type)
-    VALUES (n_presentation, 'presentation_stop')
+    INSERT INTO presentation_events (presentation, type, is_public)
+    VALUES (n_presentation, 'presentation_stop', true)
     RETURNING 'presentation_events', id, created_at
         INTO v_acknowledgement;
 

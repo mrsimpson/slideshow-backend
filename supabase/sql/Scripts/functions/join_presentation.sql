@@ -24,6 +24,12 @@ BEGIN
                 HINT = 'check t_join_code';
     end if;
 
+    if u_user_uuid is null and (u_user_anon_uuid is null or t_user_alias is null) then
+        RAISE EXCEPTION 'Insufficient user information'
+            USING DETAIL = 'The information provided does not suffice to join a presentation',
+                HINT = 'when not logged in, provide u_user_anon_uuid AND t_user_alias';
+    end if;
+
     -- check whether the user joined earlier
     select 'presentation_events', id, created_at
     from presentation_events

@@ -11,6 +11,7 @@ select pres.id,
        pres.title,
        pres.description,
        pres.lc_status,
+       pres.join_code,
        prof.username,
        prof.full_name
 from postgres.public.presentations pres

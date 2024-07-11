@@ -34,9 +34,10 @@ BEGIN
     select 'presentation_events', id, created_at
     from presentation_events
     where presentation = v_presentation.id
-      and created_by = u_user_uuid
-      and created_by_anon_uuid = u_user_anon_uuid
+      and ((u_user_uuid is not null and created_by = u_user_uuid) or
+           (u_user_uuid is null and created_by_anon_uuid = u_user_anon_uuid and created_by_alias = t_user_alias))
       and type = 'user_joined'
+    limit 1
     INTO v_acknowledgement;
 
     if v_acknowledgement is not null then
